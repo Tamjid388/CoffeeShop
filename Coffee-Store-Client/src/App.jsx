@@ -9,7 +9,7 @@ const coffees=useLoaderData()
 
   return (
     <div className='container mx-auto'>
-    <nav className='flex gap-2 font-bold justify-center py-4'>
+    <nav className='flex gap-2 font-semibold justify-center py-4'>
     <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/addCoffee'}>Addcoffee</NavLink>
       <NavLink to={'/updateCoffee'}>UpdateCoffee</NavLink>
