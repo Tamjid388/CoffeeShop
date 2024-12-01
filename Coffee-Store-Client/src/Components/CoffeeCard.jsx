@@ -1,8 +1,9 @@
 import { FaEye,FaPen  } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
-export const CoffeeCard = ({coffee}) => {
+export const CoffeeCard = ({coffee, coffees,setCoffees}) => {
     const {_id,name,quantity,supplier,taste,category,details,photo}=coffee
   const handleDelete=(id)=>{
 console.log(id);
@@ -29,7 +30,9 @@ fetch(`http://localhost:5000/coffee/${_id}`,
       title: "Deleted!",
       text: "Your coffee has been deleted.",
       icon: "success"
-    });
+    })
+    const remaining=coffees.filter(coff=>coff._id !==_id)
+    setCoffees(remaining)
   }
 })
 
@@ -56,11 +59,13 @@ fetch(`http://localhost:5000/coffee/${_id}`,
       <button className="btn bg-[#D2B48C]">
         <h1 className="text-white"><FaEye /></h1>
         </button>
-      <button className="btn bg-[#3C393B]"
+  <Link to={`/updateCoffee/${_id}`}>
+  <button className="btn bg-[#3C393B]"
        title="Update"
       >
         <h1 className="text-white"><FaPen /></h1>
       </button>
+  </Link>
       <button 
       title="Delete"
       onClick={()=>handleDelete(_id)}

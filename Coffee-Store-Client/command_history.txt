@@ -1,0 +1,10 @@
+Command: cd
+Output:
+D:\Programming Hero\Coffee-Store\Coffee-Store-Client
+
+--------------------------------------------------
+Command: echo "Hello, World!"
+Output:
+"Hello, World!"
+
+--------------------------------------------------

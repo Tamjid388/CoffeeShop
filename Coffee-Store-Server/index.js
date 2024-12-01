@@ -35,6 +35,7 @@ app.get('/coffee',async(req,res)=>{
     res.send(result)
 
 })
+// Update
 app.get('/coffee/:id',async(req,res)=>{
   const id=req.params.id
   const query={_id:new ObjectId(id)}
@@ -42,6 +43,31 @@ const result=await coffeeCollection.findOne(query)
     res.send(result)
 
 })
+app.put('/coffee/:id',async(req,res)=>{
+  const id=req.params.id
+  const filter={_id:new ObjectId(id)}
+  const options={upsert:true}
+  const updatedcoffee=req.body
+  const coffee={
+    $set:{
+      name:updatedcoffee.name, // Updated name
+      quantity: updatedcoffee.quantity, // Updated quantity
+      supplier: updatedcoffee.supplier, // Updated supplier
+      taste:updatedcoffee.coffee,
+      category:updatedcoffee.category,
+      details:updatedcoffee.details,
+      photo:updatedcoffee.photo
+    }
+  }
+  const result =await coffeeCollection.updateOne(filter,coffee,options)
+  res.send(result)
+
+
+})
+
+
+
+
 
 app.post('/coffee',async(req,res)=>{
 const newCoffee=req.body

@@ -5,8 +5,8 @@ import { NavLink, useLoaderData } from 'react-router-dom'
 import { CoffeeCard } from './Components/CoffeeCard'
 
 function App() {
-const coffees=useLoaderData()
-
+const loadedcoffees=useLoaderData()    
+const [coffees,setCoffees]=useState(loadedcoffees)
   return (
     <div className='container mx-auto'>
     <nav className='flex gap-2 font-semibold justify-center py-4'>
@@ -20,6 +20,8 @@ const coffees=useLoaderData()
   {coffees.map(coffee=><CoffeeCard 
   key={coffee._id}
   coffee={coffee}
+  coffees={coffees}
+  setCoffees={setCoffees}
   ></CoffeeCard>)}
 </div>
     </div>
