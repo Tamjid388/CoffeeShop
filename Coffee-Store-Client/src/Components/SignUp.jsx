@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { Authcontext } from "../Providers/AuthProvider";
+
 export const SignUp = () => {
+
+    const {createUser}=useContext(Authcontext)
     const handleSubmit = (e) => {
-      e.preventDefault(); // Prevent the default form submission behavior
+      e.preventDefault(); 
   
       const name = e.target.name.value;
       const email = e.target.email.value;
@@ -8,8 +13,20 @@ export const SignUp = () => {
       const confirmPassword = e.target.confirmPassword.value;
   
       console.log('Form Submitted', { name, email, password, confirmPassword });
-  
-      // You can add further processing, such as validation or API calls, here.
+
+  createUser(email,password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+      
     };
   
     return (
