@@ -16,6 +16,7 @@ const [coffees,setCoffees]=useState(loadedcoffees)
       <NavLink className={'btn '}  to={'/addCoffee'}>Addcoffee</NavLink>
       <NavLink className={'btn '}  to={'/login'}>Login</NavLink>
       <NavLink className={'btn '}  to={'/signup'}>SignUp</NavLink>
+      <NavLink className={'btn '}  to={'/users'}>Users</NavLink>
      
     </nav>
 <Outlet></Outlet>
